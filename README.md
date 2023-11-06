@@ -22,3 +22,7 @@ npm run lint
 
 ### Customize configuration
 See [Configuration Reference](https://cli.vuejs.org/config/).
+
+### For used data from db.json need
+json-server --watch db.json
+If this command is not worked, probably you need to install global json-server, for example: npm install -g json-server

@@ -1,19 +1,23 @@
 <template>
     <div class="catalog-wrapper">
         <CatalogMain/>
-        <CatalogCart/>
+        <CatalogCart 
+            v-if="CART.length"
+            :cart_data="CART"
+        />
     </div>
 </template>
 
 <script>
 import CatalogMain from './CatalogMain.vue';
 import CatalogCart from './CatalogCart.vue';
+import { mapGetters } from 'vuex';
 
     export default {
         name: 'CatalogWrapper',
         components: {
             CatalogMain,
-            CatalogCart
+            CatalogCart,
         },
         props: {},
         data() {
@@ -21,7 +25,9 @@ import CatalogCart from './CatalogCart.vue';
                 
             }
         },
-        computed: {},
+        computed: {
+            ...mapGetters(['CART']),
+        },
         methods: {},
         watch: {},
         mounted() {

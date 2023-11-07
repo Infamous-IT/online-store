@@ -6,7 +6,7 @@
         <p class="catalot-item__name">Item: {{ product_data.name }}</p>
         <p class="catalog-item__price">Price: {{ product_data.price }} UAH</p>
         <div class="btn-submit">
-            <button type="submit" @click="addToCart()">Buy</button>
+            <button type="submit" @click="addToCart">Buy</button>
         </div>
     </div>
 </template>
@@ -31,7 +31,7 @@
         computed: {},
         methods: {
             addToCart() {
-                this.$emit('addToCart', this.product_data.name);
+                this.$emit('addToCart', this.product_data);
             }
         },
         watch: {},

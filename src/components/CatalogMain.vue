@@ -6,7 +6,7 @@
                 v-for="product in PRODUCTS"
                 :key="product.article"
                 :product_data="product"
-                @addToCart="showArticle"
+                @addToCart="addToCart"
             />
         </div>
     </div>
@@ -32,9 +32,12 @@ import { mapActions, mapGetters } from 'vuex';
             ...mapGetters(['PRODUCTS']),
         },
         methods: {
-            ...mapActions(['GET_PRODUCTS_FROM_API']),
-            showArticle(data) {
-                console.log(data);
+            ...mapActions([
+                'GET_PRODUCTS_FROM_API',
+                'ADD_TO_CART'
+            ]),
+            addToCart(data) {
+                this.ADD_TO_CART(data);
             }
         },
         watch: {},

@@ -1,5 +1,10 @@
 <template>
     <div class="catalog">
+        <router-link :to="{name: 'cart'}" >
+            <div class="catalog__link">
+                Cart: {{ CART.length }}
+            </div>
+        </router-link>
         <h1>{{ title }}</h1>
         <div class="catalog__list">
             <CatalogItem 
@@ -29,7 +34,10 @@ import { mapActions, mapGetters } from 'vuex';
             }
         },
         computed: {
-            ...mapGetters(['PRODUCTS']),
+            ...mapGetters([
+                'PRODUCTS',
+                'CART'
+            ]),
         },
         methods: {
             ...mapActions([
@@ -47,7 +55,7 @@ import { mapActions, mapGetters } from 'vuex';
     }
 </script>
 
-<style scoped lang="scss">
+<style lang="scss">
     .catalog {
         padding-top: 60px;
         &__list {
@@ -55,6 +63,14 @@ import { mapActions, mapGetters } from 'vuex';
             flex-wrap: wrap;
             justify-content: space-between;
             align-items: center;
+        }
+        &__link {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            padding: $padding*2;
+            border: 1px solid #ddd;
+            cursor: pointer;
         }
     }
 

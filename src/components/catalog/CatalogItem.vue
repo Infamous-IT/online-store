@@ -1,7 +1,7 @@
 <template>
     <div class="catalog-item">
         <div class="catalog-item__image-wrap">
-            <img class="catalog-item__image" :src="require('../assets/images/' + product_data.image)" alt="t-shirt">
+            <img class="catalog-item__image" :src="require('../../assets/images/' + product_data.image)" alt="t-shirt">
         </div>
         <p class="catalot-item__name">Item: {{ product_data.name }}</p>
         <p class="catalog-item__price">Price: {{ product_data.price }} UAH</p>
@@ -41,8 +41,8 @@
     }
 </script>
 
-<style scoped lang="scss">
-    @import "../assets/styles/variables.scss";
+<style lang="scss">
+    @import "../../assets/styles/variables.scss";
 
     .catalog-item {
         flex-basis: 25%;

@@ -1,7 +1,7 @@
 <template>
     <div class="catalog-cart-item">
         <div class="catalog-cart-item__wrap">
-            <img class="catalog-cart-item__image" :src="require('../assets/images/' + cart_item_data.image)" alt="t-shirt">
+            <img class="catalog-cart-item__image" :src="require('../../assets/images/' + cart_item_data.image)" alt="t-shirt">
         </div>
         <div class="catalog-cart-item__info">
             <p class="catalot-cart-item__name">Item: {{ cart_item_data.name }}</p>
@@ -10,7 +10,11 @@
         </div>
         <div class="catalog-cart-item__quantity">
             <p>Quantity</p>
-            <p>{{ cart_item_data.quantity }}</p>
+            <p>
+                <span class="catalog-cart-item__btn" @click="decrementItem">-</span>
+                {{ cart_item_data.quantity }}
+                <span class="catalog-cart-item__btn" @click="incrementItem">+</span>
+            </p>
         </div>
         <button v-on:click="deleteItemFromCart">Delete</button>
     </div>
@@ -33,21 +37,23 @@
                 title: 'Catalog cart item'
             }
         },
-        computed: {},
         methods: {
+            decrementItem() {
+                this.$emit('decrementItem');
+            },
+            incrementItem() {
+                this.$emit('incrementItem');
+            },
             deleteItemFromCart() {
                 this.$emit('deleteItemFromCart');
             }
         },
         watch: {},
-        mounted() {
-            console.log('Catalog cart item component was loaded!');
-        }
     }
 </script>
 
-<style scoped lang="scss">
-@import "../assets/styles/variables.scss";
+<style lang="scss">
+@import "../../assets/styles/variables.scss";
     .catalog-cart-item {
         display: flex;
         justify-content: space-between;
@@ -65,6 +71,12 @@
             width: 100%;
             object-fit: cover;
             object-position: center;
+        }
+        &__btn {
+            cursor: pointer;
+            &__hover {
+                opacity: 0.8;
+            }
         }
     }
 </style>

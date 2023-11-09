@@ -33,7 +33,7 @@ import { mapGetters } from 'vuex';
     }
 </script>
 
-<style scoped lang="scss">
+<style lang="scss">
     .catalog-cart {
         width: 400px;
         margin: 0 auto;

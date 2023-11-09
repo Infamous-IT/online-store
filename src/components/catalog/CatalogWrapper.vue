@@ -27,9 +27,10 @@ import { mapGetters } from 'vuex';
     }
 </script>
 
-<style scoped lang="scss">
+<style lang="scss">
     .catalog-wrapper {
-        width: 900px;
+        max-width: 900px;
         margin: 0 auto;
+        height: inherit;
     }
 </style>

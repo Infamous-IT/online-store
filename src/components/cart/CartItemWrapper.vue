@@ -67,6 +67,7 @@ import { mapActions } from 'vuex';
 @import "../../assets/styles/variables.scss";
     .cart-item-wrapper {
         &__total {
+            @apply cart-item-wrapper__total;
             position: fixed;
             bottom: 0;
             right: 0;
@@ -78,7 +79,8 @@ import { mapActions } from 'vuex';
             color: $color-light;
             font-size: 24px;
         }
-        &__totla-title {
+        &__total-title {
+            @apply cart-item-wrapper__total-title;
             margin-right: $margin * 2;
         }
     }

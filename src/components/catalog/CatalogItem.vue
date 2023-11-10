@@ -55,11 +55,13 @@
             padding: $padding;
         }
         &__image-wrap {
+            @apply catalog-item__image-wrap;
             width: 100px;
             overflow: hidden;
             margin: 0 auto;
         }
         &__image{
+            @apply catalog-item__image;
             object-fit: cover;
             object-position: center;
             width: 100%;

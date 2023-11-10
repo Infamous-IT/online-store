@@ -16,7 +16,7 @@
                 <span class="catalog-cart-item__btn" @click="incrementItem">+</span>
             </p>
         </div>
-        <button v-on:click="deleteItemFromCart">Delete</button>
+        <button v-on:click="deleteItemFromCart">Х</button>
     </div>
 </template>
 
@@ -58,24 +58,53 @@
         display: flex;
         justify-content: space-between;
         align-items: center;
+        position: relative;
         flex-wrap: nowrap;
         padding: $padding * 2;
         margin-bottom: $margin * 2;
         box-shadow: 0 0 8px 0 $color-shadow;
         &__wrap {
+            @apply catalog-cart-item__wrap;
             width: 100px;
             overflow: hidden;
         }
         &__image {
+            @apply catalog-cart-item__image;
             height: 100%;
             width: 100%;
             object-fit: cover;
             object-position: center;
         }
         &__btn {
+            @apply catalog-cart-item__btn;
             cursor: pointer;
             &__hover {
-                opacity: 0.8;
+                @apply catalog-cart-item__btn:hover;
+                opacity: 0.9;
+            }
+        }
+        button {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background-color: red;
+            border: none;
+            color: white;
+            width: 25px;
+            height: 20px;
+            border-radius: 3%;
+            font-weight: 700;
+            cursor: pointer;
+
+            &:hover {
+                background-color: white;
+                border: 1px solid red;
+                color: red;
+                width: 25px;
+                height: 20px;
+                font-weight: 700;
+                border-radius: 3%;
+                cursor: pointer;
             }
         }
     }

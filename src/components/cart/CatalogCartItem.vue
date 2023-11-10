@@ -79,7 +79,6 @@
             @apply catalog-cart-item__btn;
             cursor: pointer;
             &__hover {
-                @apply catalog-cart-item__btn:hover;
                 opacity: 0.9;
             }
         }

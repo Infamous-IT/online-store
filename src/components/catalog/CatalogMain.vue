@@ -6,6 +6,9 @@
             </div>
         </router-link>
         <h1>{{ title }}</h1>
+        <CatalogNotification
+            :messages="messages"
+        ></CatalogNotification>
         <CatalogSelect
             :options="categories"
             :selected="selected"
@@ -25,13 +28,15 @@
 <script>
 import CatalogItem from './CatalogItem.vue';
 import CatalogSelect from './CatalogSelect.vue';
+import CatalogNotification from '../notification/CatalogNotification.vue';
 import { mapActions, mapGetters } from 'vuex';
 
     export default {
         name: 'CatalogMain',
         components: {
             CatalogItem,
-            CatalogSelect
+            CatalogSelect,
+            CatalogNotification
         },
         props: {},
         data() {
@@ -43,7 +48,8 @@ import { mapActions, mapGetters } from 'vuex';
                     {name: 'Female', value: 'F'},
                 ],
                 sortedProducts: [],
-                selected: 'All'
+                selected: 'All',
+                messages: [],
             }
         },
         computed: {
@@ -65,7 +71,13 @@ import { mapActions, mapGetters } from 'vuex';
                 'ADD_TO_CART'
             ]),
             addToCart(data) {
-                this.ADD_TO_CART(data);
+                this.ADD_TO_CART(data)
+                .then(() => {
+                    this.messages.unshift({
+                        name: 'The product was added to cart!',
+                        id: Date.now().toLocaleString()
+                    })
+                });
             },
             sortByCategories(category) {
                 this.sortedProducts = [];

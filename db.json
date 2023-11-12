@@ -2,7 +2,7 @@
     "products": [
       {
         "image": "1.jpg",
-        "name": "T-shirt 1",
+        "name": "Adidas Relaxed Crewneck Tee",
         "price": 1500,
         "article": "T1",
         "available": true,
@@ -11,7 +11,7 @@
       },
       {
         "image": "2.jpg",
-        "name": "T-shirt 2",
+        "name": "Calvin Klein Cotten Crewneck Tee",
         "price": 1200,
         "article": "T2",
         "available": true,
@@ -20,7 +20,7 @@
       },
       {
         "image": "3.jpg",
-        "name": "T-shirt 3",
+        "name": "Nike The Premium-Weight Relaxed Crew",
         "price": 980,
         "article": "T3",
         "available": false,
@@ -29,7 +29,7 @@
       },
       {
         "image": "4.jpg",
-        "name": "T-shirt 4",
+        "name": "Adidas Carhartt Force Relaxed Midweight Tee",
         "price": 1680,
         "article": "T4",
         "available": true,
@@ -38,7 +38,7 @@
       },
       {
         "image": "5.jpg",
-        "name": "T-shirt 5",
+        "name": "Lemaire Off-White Patch Pocket Tee",
         "price": 1900,
         "article": "T5",
         "available": false,
@@ -47,7 +47,7 @@
       },
       {
         "image": "6.jpg",
-        "name": "T-shirt 6",
+        "name": "Elwood Core Oversized Tee",
         "price": 1799,
         "article": "T6",
         "available": true,
@@ -56,7 +56,7 @@
       },
       {
         "image": "7.jpg",
-        "name": "T-shirt 7",
+        "name": "Adidas Fear of God Black Bonded Tee",
         "price": 1399,
         "article": "T7",
         "available": true,
@@ -65,7 +65,7 @@
       },
       {
         "image": "8.jpg",
-        "name": "T-shirt 8",
+        "name": "Under Armour Tactile Tech tee",
         "price": 1449,
         "article": "T8",
         "available": true,
@@ -74,7 +74,7 @@
       },
       {
         "image": "9.jpg",
-        "name": "T-shirt 9",
+        "name": "James Perse Combed Cotten Short Sleeve Tee",
         "price": 999,
         "article": "T9",
         "available": true,

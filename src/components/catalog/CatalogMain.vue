@@ -2,18 +2,22 @@
     <div class="catalog">
         <router-link :to="{name: 'cart'}" >
             <div class="catalog__link">
-                Cart: {{ CART.length }}
+                <i class="store-icon material-icons">store</i>
+                <span class="catalog__link-counter">{{ CART.length }}</span>
             </div>
         </router-link>
         <h1>{{ title }}</h1>
         <CatalogNotification
             :messages="messages"
         ></CatalogNotification>
-        <CatalogSelect
+        <div class="catalog__filters">
+            <CatalogSelect
             :options="categories"
             :selected="selected"
             @select="sortByCategories"
-        />
+            />
+            <CatalogSearch/>
+        </div>
         <div class="catalog__list">
             <CatalogItem 
                 v-for="product in filteredProducts"
@@ -29,6 +33,7 @@
 import CatalogItem from './CatalogItem.vue';
 import CatalogSelect from './CatalogSelect.vue';
 import CatalogNotification from '../notification/CatalogNotification.vue';
+import CatalogSearch from './CatalogSearch.vue';
 import { mapActions, mapGetters } from 'vuex';
 
     export default {
@@ -36,7 +41,8 @@ import { mapActions, mapGetters } from 'vuex';
         components: {
             CatalogItem,
             CatalogSelect,
-            CatalogNotification
+            CatalogNotification,
+            CatalogSearch
         },
         props: {},
         data() {
@@ -55,7 +61,8 @@ import { mapActions, mapGetters } from 'vuex';
         computed: {
             ...mapGetters([
                 'PRODUCTS',
-                'CART'
+                'CART',
+                'SEARCH_QUERY'
             ]),
             filteredProducts() {
                 if(this.sortedProducts.length) {
@@ -88,11 +95,27 @@ import { mapActions, mapGetters } from 'vuex';
                     }
                 });
                 this.selected = category.name;
+            },
+            filteredByName(value) {
+                this.sortedProducts = [...this.PRODUCTS];
+                this.selected = 'All';
+                if(value) {
+                    this.sortedProducts = this.sortedProducts.filter(function(item){
+                        return item.name.toLowerCase().includes(value.toLowerCase());
+                    })
+                } else {
+                    this.sortedProducts = this.PRODUCTS;
+                }
             }
         },
-        watch: {},
+        watch: {
+            SEARCH_QUERY() {
+                this.filteredByName(this.SEARCH_QUERY);
+            }
+        },
         mounted() {
             this.GET_PRODUCTS_FROM_API();
+            this.filteredByName(this.SEARCH_QUERY);
         }
     }
 </script>
@@ -116,7 +139,27 @@ import { mapActions, mapGetters } from 'vuex';
             border: 1px solid #ddd;
             cursor: pointer;
         }
+        &__filters {
+            @apply catalog__filters;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 10px;
+        }
     }
-
-    
+    .catalog__link-counter {
+        position: relative;
+        top: -17px;
+        left: -32%;
+        transform: translate(-50%, -50%);
+        padding: 5px;
+        opacity: 0.9;
+        font-size: 11px;
+        color: green;
+        background-color: #fff;
+        border-radius: 90%;
+    }
+    .store-icon {
+        color: #1a5972;
+    }
 </style>
